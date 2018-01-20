@@ -4,7 +4,7 @@
 
 using namespace std;
 
-#define PHYSMEMSZ 262144
+#define PHYSMEMSZ 262144  // 262144 = 2^18
 
 class PhysMem {
     friend class VirtualMemory;

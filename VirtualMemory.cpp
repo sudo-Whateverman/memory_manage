@@ -12,10 +12,15 @@ VirtualMemory::VirtualMemory() {
 }
 
 int* VirtualMemory::GetFreeFrame() {
-    int* framePtr = freeFramesList.front();
-    freeFramesList.pop();
-    memset(framePtr, 0, PAGESIZE);
-    return framePtr;
+    if (!freeFramesList.empty()){
+        int* framePtr = freeFramesList.front();
+        freeFramesList.pop();
+        memset(framePtr, 0, PAGESIZE);
+        return framePtr;
+    }
+    else {
+        throw "The PhysMem is full and cannot pass a free frame";
+    }
 }
 
 VirtualMemory::~VirtualMemory() {
@@ -24,4 +29,8 @@ VirtualMemory::~VirtualMemory() {
 
 void VirtualMemory::ReleaseFrame(int* framePointer) {
     // TODO: add code here
+    // release memory, pop frame to queue.
+    // Will be called when we want to pop a new page and don't have frames
+    memset(framePointer, 0, PAGESIZE);
+    freeFramesList.push(framePointer);
 }

@@ -15,6 +15,7 @@
 #define DIRECTORYTEST_H
 
 #include <cppunit/extensions/HelperMacros.h>
+#include "../PageDirectoryEntry.h"
 
 class directoryTest : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST_SUITE(directoryTest);
@@ -37,7 +38,9 @@ private:
     void testSet_table_address();
     void testIs_valid();
     void testSet_valid();
-
+    PageDirectoryEntry* pageDirectoryEntry;
+    PageTableEntry* _pagetable;
+    int dummy_int = 200;
 };
 
 #endif /* DIRECTORYTEST_H */
