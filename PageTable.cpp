@@ -50,6 +50,4 @@ void PageTable::Init(VirtualMemory* vrtlMem) {
     _vrtlMem = vrtlMem;
 }
 
-// TODO : add PageDir miss 
 // TODO : add release on PageFault (try catch)
-// TODO : check free on that malloc. maybe it needs some help. :)
