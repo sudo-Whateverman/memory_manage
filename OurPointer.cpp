@@ -4,8 +4,10 @@
 
 int& OurPointer::operator*() {
     int* page = _vrtlMem->GetPage(_adr);
-    unsigned int offset = ((_adr << 22) >> 22);
-    return page[offset];
+    // Very important - this is the offset divided by 4, since page is an int pointer, it will
+    // multiply by 4
+    unsigned int offsetInInt = (_adr << 20) >> 22;
+    return page[offsetInInt];
 }
 
 OurPointer& OurPointer::operator++() {

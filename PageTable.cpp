@@ -16,13 +16,19 @@ int* PageTable::GetPage(unsigned int adr) {
     unsigned int table = ((adr << 10) >> 22);
     unsigned int offset = ((adr << 22) >> 22);
 
+    printf("Dir Table Offset : %d %d %d\n", dir, table, offset);
+
     unsigned int pagenum = (adr) >> 12;
     int allocpgtbl = 0;
     int pgfault = 0;
 
 
     if (!_cr3[dir].is_valid()) {
-        _cr3[dir].set_table_address((PageTableEntry*) malloc(1024 * sizeof (PageTableEntry)));  // TODO: refactor - move to PageDir ?!
+    	PageTableEntry* tmpPgTblEntry = new PageTableEntry[1024];
+    	for (int iter = 0; iter < 1024; iter++) {
+    		tmpPgTblEntry[iter].set_valid(false);
+    	}
+        _cr3[dir].set_table_address(tmpPgTblEntry);  // TODO: refactor - move to PageDir ?!
         _cr3[dir].set_valid(true);
         allocpgtbl = 1;
     }

@@ -30,11 +30,11 @@ public:
     //	beginning of the Frame! it should be the same pointer as held in the PTE.
 
     OurPointer OurMalloc(size_t size) { //allocates a pointer, we added the code for your convenience
-        if (allocated + size >= (VIRTMEMSIZE >> 2)) {
+        if (allocated + (size * sizeof(int)) >= (VIRTMEMSIZE)) {
             throw "We are limited to 4294967296 bytes with our 32 bit address size";
         }
         OurPointer ptr(allocated, this);
-        allocated += size;
+        allocated += (size * sizeof(int));
         return ptr;
     }
 
