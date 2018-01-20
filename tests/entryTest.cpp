@@ -47,8 +47,7 @@ void entryTest::testSet_page_address() {
     int* result = pageTableEntry.get_page_address();
     if (result != &dummy_int) {
         CPPUNIT_ASSERT(false);
-    }
-    else if(*result != dummy_int){
+    } else if (*result != dummy_int) {
         CPPUNIT_ASSERT(false);
     }
 }

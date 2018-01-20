@@ -2,7 +2,7 @@
 #include <fstream>
 #include "VirtualMemory.h"
 
-#define VECSIZE 10
+#define VECSIZE 200
 
 using namespace std;
 
@@ -23,12 +23,12 @@ int main() {
     srand(1);
     for (int i = 0; i < VECSIZE * VECSIZE; ++i) {
         *(mat++) = rand() % 100;
-    }
+    }  // mat(A) n*n init
     mat = matBase;
     for (int i = 0; i < VECSIZE; ++i) {
         *(vec++) = rand() % 20000;
         *(res++) = 0;
-    }
+    } // vec(x) n*1 init vec(y) n*1 init
     vec = vecBase;
     res = resBase;
     for (int row = 0; row < VECSIZE; ++row) {
@@ -41,7 +41,7 @@ int main() {
         }
         vec = vecBase;
         ++res;
-    }
+    } // x*A = y matrix multiply
     mat = matBase;
     vec = vecBase;
     res = resBase;

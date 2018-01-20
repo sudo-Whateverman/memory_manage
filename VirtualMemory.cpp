@@ -12,15 +12,19 @@ VirtualMemory::VirtualMemory() {
 }
 
 int* VirtualMemory::GetFreeFrame() {
-    if (!freeFramesList.empty()){
+    if (!freeFramesList.empty()) {
         int* framePtr = freeFramesList.front();
         freeFramesList.pop();
         memset(framePtr, 0, PAGESIZE);
         return framePtr;
-    }
-    else {
+    } else {
         throw "The PhysMem is full and cannot pass a free frame";
     }
+}
+
+int* VirtualMemory::GetPage(unsigned int adr) {
+    // This is the magic sauce.
+    return pageTable.GetPage(adr);
 }
 
 VirtualMemory::~VirtualMemory() {

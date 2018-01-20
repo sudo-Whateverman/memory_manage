@@ -46,11 +46,10 @@ void directoryTest::testSet_table_address() {
     PageTableEntry* adr;
     PageDirectoryEntry pageDirectoryEntry;
     pageDirectoryEntry.set_table_address(_pagetable);
-    PageTableEntry* result = pageDirectoryEntry.get_table_address();  
+    PageTableEntry* result = pageDirectoryEntry.get_table_address();
     if (result != _pagetable) {
         CPPUNIT_ASSERT(false);
-    }
-    else if(result->get_page_address() != &dummy_int){
+    } else if (result->get_page_address() != &dummy_int) {
         CPPUNIT_ASSERT(false);
     }
 }
@@ -72,7 +71,7 @@ void directoryTest::testSet_valid() {
         CPPUNIT_ASSERT(false);
     }
     pageDirectoryEntry.set_valid(false);
-    result = pageDirectoryEntry.is_valid();    
+    result = pageDirectoryEntry.is_valid();
     if (result) {
         CPPUNIT_ASSERT(false);
     }

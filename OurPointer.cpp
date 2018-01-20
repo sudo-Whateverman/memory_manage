@@ -29,3 +29,6 @@ OurPointer OurPointer::operator--(int) {
     _adr = _adr - sizeof (int);
     return temporary;
 }
+
+
+// TODO: can virtual memory lie in 2 separate frames ? Would frame boundaries trigger a overflow?

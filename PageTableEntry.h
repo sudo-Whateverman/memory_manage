@@ -11,9 +11,9 @@ public:
 
     bool is_valid(); //Returns whether the entry is valid 
 
-    void set_valid(bool valid);  //Allows to set whether the entry is valid 
+    void set_valid(bool valid); //Allows to set whether the entry is valid 
 private:
     //Fill the class with the necessary member variables
     bool _valid;
-    int* _address;
+    int* _address;  // TODO: supposed to be 2^10 entries.
 };

@@ -31,21 +31,18 @@ void VirtualMemoryTest::setUp() {
 void VirtualMemoryTest::tearDown() {
 }
 
-
-
 void VirtualMemoryTest::testGetFreeFrame() {
     VirtualMemory virtualMemory;
-    for (int i=0;i<64; i++){
+    for (int i = 0; i < 64; i++) {
         int* result = virtualMemory.GetFreeFrame();
-        if (result ==nullptr) {
+        if (result == nullptr) {
             CPPUNIT_ASSERT(false);
         }
     }
     try {
         int* result = virtualMemory.GetFreeFrame();
-        CPPUNIT_ASSERT(false);  // If there is no exception thrown, the test asserts false and fails.
-    }
-    catch (...){
+        CPPUNIT_ASSERT(false); // If there is no exception thrown, the test asserts false and fails.
+    } catch (...) {
     }
 }
 
@@ -55,8 +52,7 @@ void VirtualMemoryTest::testReleaseFrame() {
     int* result = virtualMemory.GetFreeFrame();
     try {
         virtualMemory.ReleaseFrame(result);
-    }
-    catch (...) {
+    } catch (...) {
         CPPUNIT_ASSERT(false);
     }
 }

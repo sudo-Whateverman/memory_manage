@@ -1,6 +1,5 @@
 #include "PageDirectoryEntry.h"
 
-
 PageTableEntry* PageDirectoryEntry::get_table_address() {
     return _pagetable;
 }
